@@ -2,6 +2,8 @@
 
 **SACRSN BEFORE FINE TUNING**
 
+To scale it up it will need Holographic Associative Memory
+
 SACRSN-SAVE-ROUND1.py
 
 1000 EPISODES
