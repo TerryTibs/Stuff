@@ -123,6 +123,8 @@ Its force ole  that which is
 **FORCED GRAPH CREATION**
 <img width="690" height="803" alt="Figure_1" src="https://github.com/user-attachments/assets/71cfa4ae-5127-4be7-95cc-8c22cea8dcf2" />
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 **SACRSN AFTER FINE TUNING**
 
 ***SACRSN-FINETUNE-ROUND2.py***
@@ -191,6 +193,7 @@ The  t all pentir of all perthout fals is like
 
 <img width="690" height="803" alt="Figure_2" src="https://github.com/user-attachments/assets/fe8382da-21c7-4d22-aa31-122b5e9f319b" />
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 WITH CONFIG 
 
