@@ -18,8 +18,6 @@ Rule-level abstraction (future)
 
 SACRSN-SAVE-ROUND1.py
 
-1000 EPISODES
-
 Ep 0000 | Loss: 4.2455 | Avg Thinking Steps: 7.81
 Ep 0010 | Loss: 3.3380 | Avg Thinking Steps: 5.39
 Ep 0020 | Loss: 3.2582 | Avg Thinking Steps: 5.72
@@ -140,8 +138,6 @@ Its force ole  that which is
 **SACRSN AFTER FINE TUNING**
 
 ***SACRSN-FINETUNE-ROUND2.py***
-
-+500 MORE
 
 Ep 1000 | Loss: 0.1332 | Avg Steps: 1.35
 Ep 1010 | Loss: 0.0985 | Avg Steps: 1.36
