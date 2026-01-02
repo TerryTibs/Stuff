@@ -535,3 +535,168 @@ WITH CONFIG
     "grad_clip": 0.5,         
     "device": "cuda" if torch.cuda.is_available() else "cpu",
     "eps": 1e-6
+
+
+Ep 1490 | Loss: 0.1330 | Avg Thinking Steps: 1.75
+Ep 1500 | Loss: 0.1822 | Avg Thinking Steps: 1.70
+Ep 1510 | Loss: 0.1181 | Avg Thinking Steps: 1.71
+Ep 1520 | Loss: 0.1781 | Avg Thinking Steps: 1.75
+Ep 1530 | Loss: 0.1300 | Avg Thinking Steps: 1.76
+Ep 1540 | Loss: 0.1127 | Avg Thinking Steps: 1.69
+Ep 1550 | Loss: 0.1771 | Avg Thinking Steps: 1.72
+Ep 1560 | Loss: 0.2033 | Avg Thinking Steps: 1.67
+Ep 1570 | Loss: 0.1977 | Avg Thinking Steps: 1.65
+Ep 1580 | Loss: 0.1363 | Avg Thinking Steps: 1.73
+Ep 1590 | Loss: 0.2438 | Avg Thinking Steps: 1.70
+Ep 1600 | Loss: 0.1876 | Avg Thinking Steps: 1.72
+Ep 1610 | Loss: 0.1336 | Avg Thinking Steps: 1.70
+Ep 1620 | Loss: 0.2065 | Avg Thinking Steps: 1.70
+Ep 1630 | Loss: 0.1571 | Avg Thinking Steps: 1.70
+Ep 1640 | Loss: 0.1180 | Avg Thinking Steps: 1.74
+Ep 1650 | Loss: 0.1826 | Avg Thinking Steps: 1.70
+Ep 1660 | Loss: 0.1874 | Avg Thinking Steps: 1.71
+Ep 1670 | Loss: 0.2426 | Avg Thinking Steps: 1.69
+Ep 1680 | Loss: 0.1402 | Avg Thinking Steps: 1.75
+Ep 1690 | Loss: 0.2651 | Avg Thinking Steps: 1.72
+Ep 1700 | Loss: 0.2038 | Avg Thinking Steps: 1.73
+Ep 1710 | Loss: 0.2910 | Avg Thinking Steps: 1.67
+Ep 1720 | Loss: 0.1847 | Avg Thinking Steps: 1.69
+Ep 1730 | Loss: 0.2253 | Avg Thinking Steps: 1.69
+Ep 1740 | Loss: 0.2470 | Avg Thinking Steps: 1.73
+Ep 1750 | Loss: 0.1911 | Avg Thinking Steps: 1.76
+Ep 1760 | Loss: 0.1810 | Avg Thinking Steps: 1.73
+Ep 1770 | Loss: 0.1865 | Avg Thinking Steps: 1.77
+Ep 1780 | Loss: 0.1690 | Avg Thinking Steps: 1.73
+Ep 1790 | Loss: 0.1531 | Avg Thinking Steps: 1.74
+Ep 1800 | Loss: 0.1692 | Avg Thinking Steps: 1.74
+Ep 1810 | Loss: 0.2073 | Avg Thinking Steps: 1.82
+Ep 1820 | Loss: 0.2719 | Avg Thinking Steps: 1.75
+Ep 1830 | Loss: 0.2058 | Avg Thinking Steps: 1.74
+Ep 1840 | Loss: 0.3064 | Avg Thinking Steps: 1.72
+Ep 1850 | Loss: 0.1038 | Avg Thinking Steps: 1.73
+Ep 1860 | Loss: 0.4624 | Avg Thinking Steps: 1.76
+Ep 1870 | Loss: 0.2375 | Avg Thinking Steps: 1.81
+Ep 1880 | Loss: 0.1649 | Avg Thinking Steps: 1.73
+Ep 1890 | Loss: 0.2292 | Avg Thinking Steps: 1.74
+Ep 1900 | Loss: 0.2384 | Avg Thinking Steps: 1.67
+Ep 1910 | Loss: 0.1491 | Avg Thinking Steps: 1.76
+Ep 1920 | Loss: 0.2017 | Avg Thinking Steps: 1.72
+Ep 1930 | Loss: 0.1974 | Avg Thinking Steps: 1.68
+Ep 1940 | Loss: 0.2005 | Avg Thinking Steps: 1.68
+Ep 1950 | Loss: 0.1914 | Avg Thinking Steps: 1.69
+Ep 1960 | Loss: 0.1434 | Avg Thinking Steps: 1.70
+Ep 1970 | Loss: 0.2100 | Avg Thinking Steps: 1.71
+Ep 1980 | Loss: 0.1404 | Avg Thinking Steps: 1.74
+Ep 1990 | Loss: 0.2541 | Avg Thinking Steps: 1.74
+Ep 2000 | Loss: 0.1638 | Avg Thinking Steps: 1.74
+Ep 2010 | Loss: 0.1547 | Avg Thinking Steps: 1.71
+Ep 2020 | Loss: 0.1236 | Avg Thinking Steps: 1.72
+Ep 2030 | Loss: 0.1538 | Avg Thinking Steps: 1.73
+Ep 2040 | Loss: 0.2555 | Avg Thinking Steps: 1.78
+Ep 2050 | Loss: 0.1138 | Avg Thinking Steps: 1.70
+Ep 2060 | Loss: 0.1403 | Avg Thinking Steps: 1.72
+Ep 2070 | Loss: 0.1990 | Avg Thinking Steps: 1.65
+Ep 2080 | Loss: 0.1556 | Avg Thinking Steps: 1.70
+Ep 2090 | Loss: 0.1690 | Avg Thinking Steps: 1.71
+Ep 2100 | Loss: 0.2132 | Avg Thinking Steps: 1.78
+Ep 2110 | Loss: 0.1985 | Avg Thinking Steps: 1.72
+Ep 2120 | Loss: 0.1141 | Avg Thinking Steps: 1.72
+Ep 2130 | Loss: 0.1576 | Avg Thinking Steps: 1.72
+Ep 2140 | Loss: 0.1711 | Avg Thinking Steps: 1.76
+Ep 2150 | Loss: 0.2383 | Avg Thinking Steps: 1.70
+Ep 2160 | Loss: 0.1276 | Avg Thinking Steps: 1.67
+Ep 2170 | Loss: 0.1790 | Avg Thinking Steps: 1.74
+Ep 2180 | Loss: 0.1142 | Avg Thinking Steps: 1.73
+Ep 2190 | Loss: 0.0821 | Avg Thinking Steps: 1.76
+Ep 2200 | Loss: 0.2312 | Avg Thinking Steps: 1.74
+Ep 2210 | Loss: 0.0984 | Avg Thinking Steps: 1.73
+Ep 2220 | Loss: 0.1634 | Avg Thinking Steps: 1.75
+Ep 2230 | Loss: 0.1379 | Avg Thinking Steps: 1.74
+Ep 2240 | Loss: 0.1640 | Avg Thinking Steps: 1.77
+Ep 2250 | Loss: 0.1514 | Avg Thinking Steps: 1.72
+Ep 2260 | Loss: 0.1218 | Avg Thinking Steps: 1.70
+Ep 2270 | Loss: 0.1525 | Avg Thinking Steps: 1.70
+Ep 2280 | Loss: 0.1374 | Avg Thinking Steps: 1.71
+Ep 2290 | Loss: 0.1903 | Avg Thinking Steps: 1.68
+Ep 2300 | Loss: 0.1416 | Avg Thinking Steps: 1.67
+Ep 2310 | Loss: 0.2223 | Avg Thinking Steps: 1.73
+Ep 2320 | Loss: 0.1097 | Avg Thinking Steps: 1.67
+Ep 2330 | Loss: 0.1694 | Avg Thinking Steps: 1.71
+Ep 2340 | Loss: 0.1006 | Avg Thinking Steps: 1.74
+Ep 2350 | Loss: 0.2418 | Avg Thinking Steps: 1.70
+Ep 2360 | Loss: 0.1443 | Avg Thinking Steps: 1.72
+Ep 2370 | Loss: 0.1162 | Avg Thinking Steps: 1.69
+Ep 2380 | Loss: 0.1944 | Avg Thinking Steps: 1.69
+Ep 2390 | Loss: 0.1429 | Avg Thinking Steps: 1.74
+Ep 2400 | Loss: 0.1428 | Avg Thinking Steps: 1.74
+Ep 2410 | Loss: 0.1738 | Avg Thinking Steps: 1.69
+Ep 2420 | Loss: 0.2143 | Avg Thinking Steps: 1.74
+Ep 2430 | Loss: 0.1555 | Avg Thinking Steps: 1.73
+Ep 2440 | Loss: 0.1329 | Avg Thinking Steps: 1.72
+Ep 2450 | Loss: 0.0938 | Avg Thinking Steps: 1.74
+Ep 2460 | Loss: 0.1143 | Avg Thinking Steps: 1.69
+Ep 2470 | Loss: 0.1055 | Avg Thinking Steps: 1.77
+Ep 2480 | Loss: 0.1409 | Avg Thinking Steps: 1.70
+Ep 2490 | Loss: 0.1163 | Avg Thinking Steps: 1.75
+Ep 2500 | Loss: 0.1647 | Avg Thinking Steps: 1.74
+Ep 2510 | Loss: 0.1783 | Avg Thinking Steps: 1.74
+Ep 2520 | Loss: 0.2229 | Avg Thinking Steps: 1.81
+Ep 2530 | Loss: 0.2161 | Avg Thinking Steps: 1.74
+Ep 2540 | Loss: 0.2113 | Avg Thinking Steps: 1.72
+Ep 2550 | Loss: 0.2907 | Avg Thinking Steps: 1.69
+Ep 2560 | Loss: 0.1778 | Avg Thinking Steps: 1.64
+Ep 2570 | Loss: 0.1948 | Avg Thinking Steps: 1.71
+Ep 2580 | Loss: 0.1680 | Avg Thinking Steps: 1.69
+Ep 2590 | Loss: 0.1724 | Avg Thinking Steps: 1.65
+Ep 2600 | Loss: 0.1663 | Avg Thinking Steps: 1.64
+Ep 2610 | Loss: 0.1326 | Avg Thinking Steps: 1.61
+Ep 2620 | Loss: 0.1617 | Avg Thinking Steps: 1.65
+Ep 2630 | Loss: 0.1606 | Avg Thinking Steps: 1.69
+Ep 2640 | Loss: 0.0948 | Avg Thinking Steps: 1.64
+Ep 2650 | Loss: 0.1541 | Avg Thinking Steps: 1.64
+Ep 2660 | Loss: 0.1741 | Avg Thinking Steps: 1.66
+Ep 2670 | Loss: 0.1255 | Avg Thinking Steps: 1.62
+Ep 2680 | Loss: 0.1738 | Avg Thinking Steps: 1.59
+Ep 2690 | Loss: 0.1786 | Avg Thinking Steps: 1.60
+Ep 2700 | Loss: 0.1069 | Avg Thinking Steps: 1.59
+Ep 2710 | Loss: 0.1352 | Avg Thinking Steps: 1.67
+Ep 2720 | Loss: 0.1721 | Avg Thinking Steps: 1.69
+Ep 2730 | Loss: 0.0908 | Avg Thinking Steps: 1.57
+Ep 2740 | Loss: 0.1304 | Avg Thinking Steps: 1.60
+Ep 2750 | Loss: 0.1408 | Avg Thinking Steps: 1.69
+Ep 2760 | Loss: 0.1542 | Avg Thinking Steps: 1.64
+4Ep 2770 | Loss: 0.1259 | Avg Thinking Steps: 1.63
+Ep 2780 | Loss: 0.1360 | Avg Thinking Steps: 1.62
+Ep 2790 | Loss: 0.1690 | Avg Thinking Steps: 1.63
+Ep 2800 | Loss: 0.1428 | Avg Thinking Steps: 1.69
+Ep 2810 | Loss: 0.1602 | Avg Thinking Steps: 1.60
+Ep 2820 | Loss: 0.0953 | Avg Thinking Steps: 1.61
+Ep 2830 | Loss: 0.2412 | Avg Thinking Steps: 1.66
+Ep 2840 | Loss: 0.1301 | Avg Thinking Steps: 1.63
+Ep 2850 | Loss: 0.2176 | Avg Thinking Steps: 1.62
+Ep 2860 | Loss: 0.1691 | Avg Thinking Steps: 1.63
+Ep 2870 | Loss: 0.1807 | Avg Thinking Steps: 1.58
+Ep 2880 | Loss: 0.2175 | Avg Thinking Steps: 1.63
+Ep 2890 | Loss: 0.1712 | Avg Thinking Steps: 1.62
+Ep 2900 | Loss: 0.1751 | Avg Thinking Steps: 1.58
+Ep 2910 | Loss: 0.1821 | Avg Thinking Steps: 1.64
+Ep 2920 | Loss: 0.1587 | Avg Thinking Steps: 1.66
+Ep 2930 | Loss: 0.2035 | Avg Thinking Steps: 1.65
+Ep 2940 | Loss: 0.1874 | Avg Thinking Steps: 1.68
+Ep 2950 | Loss: 0.1173 | Avg Thinking Steps: 1.64
+Ep 2960 | Loss: 0.0980 | Avg Thinking Steps: 1.62
+Ep 2970 | Loss: 0.2413 | Avg Thinking Steps: 1.61
+Ep 2980 | Loss: 0.1367 | Avg Thinking Steps: 1.67
+Ep 2990 | Loss: 0.1698 | Avg Thinking Steps: 1.67
+
+--- Saving Model to crsn_complex_model.pth ---
+Saved.
+Model saved locally to /home/dan/Desktop/ProjectX/crsn_complex_model.pth
+
+--- Visualizing Learned Symbolic Graph ---
+Graph sparse.
+
+<img width="690" height="803" alt="Figure_5" src="https://github.com/user-attachments/assets/3d22f9fc-68e2-4337-8ef5-9a296d86f7b3" />
+
+Generated: That which is like to that which is like to that which is like to that which is like to that which is
+
