@@ -901,3 +901,91 @@ The fant wion is below is below is below is below is below is above.
 Th is below is below is above.
 Th is below is orthich is below is like i
 
+----------------------------------------------------------------------------------------------------------------------
+
+SACRSNv7
+
+Ep 0000 | Loss: 4.4031 | Steps: 7.92 | LR: 0.001000
+Ep 0050 | Loss: 3.0882 | Steps: 4.20 | LR: 0.000999
+Ep 0100 | Loss: 3.1524 | Steps: 3.23 | LR: 0.000997
+Ep 0150 | Loss: 3.2100 | Steps: 4.90 | LR: 0.000994
+Ep 0200 | Loss: 3.0778 | Steps: 3.91 | LR: 0.000989
+Ep 0250 | Loss: 2.4788 | Steps: 3.22 | LR: 0.000983
+Ep 0300 | Loss: 1.1446 | Steps: 1.96 | LR: 0.000976
+Ep 0350 | Loss: 0.7598 | Steps: 1.81 | LR: 0.000967
+Ep 0400 | Loss: 0.6822 | Steps: 1.59 | LR: 0.000957
+Ep 0450 | Loss: 0.3569 | Steps: 1.42 | LR: 0.000946
+Ep 0500 | Loss: 0.3952 | Steps: 1.45 | LR: 0.000933
+Ep 0550 | Loss: 0.3968 | Steps: 1.48 | LR: 0.000920
+Ep 0600 | Loss: 0.3562 | Steps: 1.53 | LR: 0.000905
+Ep 0650 | Loss: 0.2170 | Steps: 1.49 | LR: 0.000889
+Ep 0700 | Loss: 0.2440 | Steps: 1.45 | LR: 0.000873
+Ep 0750 | Loss: 0.2684 | Steps: 1.42 | LR: 0.000855
+Ep 0800 | Loss: 0.3100 | Steps: 1.42 | LR: 0.000836
+Ep 0850 | Loss: 0.2111 | Steps: 1.51 | LR: 0.000816
+Ep 0900 | Loss: 0.2104 | Steps: 1.41 | LR: 0.000796
+Ep 0950 | Loss: 0.2469 | Steps: 1.37 | LR: 0.000774
+Ep 1000 | Loss: 0.1579 | Steps: 1.45 | LR: 0.000752
+Ep 1050 | Loss: 0.2081 | Steps: 1.41 | LR: 0.000729
+Ep 1100 | Loss: 0.2145 | Steps: 1.42 | LR: 0.000706
+Ep 1150 | Loss: 0.1718 | Steps: 1.44 | LR: 0.000682
+Ep 1200 | Loss: 0.1756 | Steps: 1.46 | LR: 0.000657
+Ep 1250 | Loss: 0.1723 | Steps: 1.50 | LR: 0.000633
+Ep 1300 | Loss: 0.1478 | Steps: 1.45 | LR: 0.000607
+Ep 1350 | Loss: 0.1489 | Steps: 1.51 | LR: 0.000582
+Ep 1400 | Loss: 0.1744 | Steps: 1.55 | LR: 0.000556
+Ep 1450 | Loss: 0.2148 | Steps: 1.54 | LR: 0.000530
+Ep 1500 | Loss: 0.2128 | Steps: 1.57 | LR: 0.000504
+Ep 1550 | Loss: 0.1288 | Steps: 1.51 | LR: 0.000479
+Ep 1600 | Loss: 0.1732 | Steps: 1.58 | LR: 0.000453
+Ep 1650 | Loss: 0.1338 | Steps: 1.52 | LR: 0.000427
+Ep 1700 | Loss: 0.1423 | Steps: 1.54 | LR: 0.000402
+Ep 1750 | Loss: 0.1516 | Steps: 1.57 | LR: 0.000376
+Ep 1800 | Loss: 0.1127 | Steps: 1.63 | LR: 0.000352
+Ep 1850 | Loss: 0.1209 | Steps: 1.60 | LR: 0.000327
+Ep 1900 | Loss: 0.1000 | Steps: 1.61 | LR: 0.000303
+Ep 1950 | Loss: 0.1137 | Steps: 1.58 | LR: 0.000280
+Ep 2000 | Loss: 0.0944 | Steps: 1.57 | LR: 0.000257
+Ep 2050 | Loss: 0.1191 | Steps: 1.60 | LR: 0.000235
+Ep 2100 | Loss: 0.1524 | Steps: 1.62 | LR: 0.000214
+Ep 2150 | Loss: 0.1415 | Steps: 1.62 | LR: 0.000193
+Ep 2200 | Loss: 0.1411 | Steps: 1.63 | LR: 0.000173
+Ep 2250 | Loss: 0.1317 | Steps: 1.61 | LR: 0.000155
+Ep 2300 | Loss: 0.1238 | Steps: 1.63 | LR: 0.000137
+Ep 2350 | Loss: 0.1046 | Steps: 1.65 | LR: 0.000120
+Ep 2400 | Loss: 0.1136 | Steps: 1.62 | LR: 0.000104
+Ep 2450 | Loss: 0.1112 | Steps: 1.60 | LR: 0.000090
+Ep 2500 | Loss: 0.1098 | Steps: 1.64 | LR: 0.000076
+Ep 2550 | Loss: 0.0754 | Steps: 1.64 | LR: 0.000064
+Ep 2600 | Loss: 0.0871 | Steps: 1.62 | LR: 0.000053
+Ep 2650 | Loss: 0.0793 | Steps: 1.61 | LR: 0.000043
+Ep 2700 | Loss: 0.0833 | Steps: 1.59 | LR: 0.000034
+Ep 2750 | Loss: 0.0950 | Steps: 1.59 | LR: 0.000027
+Ep 2800 | Loss: 0.0824 | Steps: 1.59 | LR: 0.000021
+Ep 2850 | Loss: 0.0684 | Steps: 1.59 | LR: 0.000016
+Ep 2900 | Loss: 0.0713 | Steps: 1.60 | LR: 0.000013
+Ep 2950 | Loss: 0.0681 | Steps: 1.58 | LR: 0.000011
+
+--- Saving Model to crsn_ultimate_final.pth ---
+Saved.
+
+--- Visualizing Learned Symbolic Graph ---
+Active Symbols: 64 / 64
+
+<img width="1199" height="804" alt="Figure_6" src="https://github.com/user-attachments/assets/a0abc07e-3b53-4c58-81cf-5f3c2059bca0" />
+
+
+Generated: That which is above.
+The in the er of all pe conve in the in thout fals like to that which is below is like to the if it be conve if it be conve in the in ther of all pe.ue, without fals like to that w
+
+
+--- Extracting Explicit Logic Rules ---
+
+FROM   | TO     | COUNT  | AVG THINKING STEPS
+---------------------------------------------
+S_60   -> S_60   | 188    | 1.41
+S_60   -> S_51   | 35     | 1.91
+S_51   -> S_60   | 34     | 1.47
+S_51   -> S_51   | 15     | 1.87
+
+
