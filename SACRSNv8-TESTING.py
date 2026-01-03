@@ -20,7 +20,7 @@ CONFIG = {
     "commitment_cost": 0.25,
     "graph_bias_scale": 0.5,
     "symbol_consistency_weight": 0.01,
-    "epochs": 3000,
+    "epochs": 300,
     "learning_rate": 0.001,
     "grad_clip": 0.5,
     "device": "cuda" if torch.cuda.is_available() else "cpu",
