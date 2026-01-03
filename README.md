@@ -1024,3 +1024,57 @@ The is like is below is fo thout is force on it below ents fthove is force of it
 Thich is force of fald 
 and is belo
 
+Ep 0000 | Loss: 4.3712 | Steps: 7.81 | LR: 0.001000
+Ep 0050 | Loss: 3.2584 | Steps: 3.34 | LR: 0.000997
+Ep 0100 | Loss: 2.8783 | Steps: 2.10 | LR: 0.000989
+Ep 0150 | Loss: 1.3445 | Steps: 1.87 | LR: 0.000975
+Ep 0200 | Loss: 0.8178 | Steps: 1.65 | LR: 0.000957
+Ep 0250 | Loss: 0.5996 | Steps: 1.35 | LR: 0.000933
+Ep 0300 | Loss: 0.5065 | Steps: 1.49 | LR: 0.000905
+Ep 0350 | Loss: 0.3000 | Steps: 1.49 | LR: 0.000872
+Ep 0400 | Loss: 0.3460 | Steps: 1.52 | LR: 0.000835
+Ep 0450 | Loss: 0.2393 | Steps: 1.66 | LR: 0.000795
+Ep 0500 | Loss: 0.3101 | Steps: 1.57 | LR: 0.000752
+Ep 0550 | Loss: 0.2589 | Steps: 1.61 | LR: 0.000705
+Ep 0600 | Loss: 0.2873 | Steps: 1.68 | LR: 0.000657
+Ep 0650 | Loss: 0.2761 | Steps: 1.66 | LR: 0.000607
+Ep 0700 | Loss: 0.1524 | Steps: 1.73 | LR: 0.000556
+Ep 0750 | Loss: 0.2174 | Steps: 1.73 | LR: 0.000504
+Ep 0800 | Loss: 0.1421 | Steps: 1.77 | LR: 0.000452
+Ep 0850 | Loss: 0.1340 | Steps: 1.76 | LR: 0.000401
+Ep 0900 | Loss: 0.1596 | Steps: 1.73 | LR: 0.000351
+Ep 0950 | Loss: 0.1566 | Steps: 1.77 | LR: 0.000303
+Ep 1000 | Loss: 0.1576 | Steps: 1.81 | LR: 0.000257
+Ep 1050 | Loss: 0.1194 | Steps: 1.80 | LR: 0.000213
+Ep 1100 | Loss: 0.1325 | Steps: 1.77 | LR: 0.000173
+Ep 1150 | Loss: 0.1258 | Steps: 1.79 | LR: 0.000136
+Ep 1200 | Loss: 0.1311 | Steps: 1.75 | LR: 0.000104
+Ep 1250 | Loss: 0.1715 | Steps: 1.78 | LR: 0.000076
+Ep 1300 | Loss: 0.0921 | Steps: 1.75 | LR: 0.000052
+Ep 1350 | Loss: 0.0789 | Steps: 1.77 | LR: 0.000034
+Ep 1400 | Loss: 0.0908 | Steps: 1.74 | LR: 0.000021
+Ep 1450 | Loss: 0.0952 | Steps: 1.74 | LR: 0.000013
+
+--- Saving Model to crsn_ultimate_final.pth ---
+Saved.
+
+--- Visualizing Learned Symbolic Graph ---
+Active Symbols: 64 / 64
+
+Generated: Trth. 
+Ther of all pelow be conve is like to that which is he wirue. 
+The ch is hicf is entirtain aathout fals lintirue. 
+Therth. 
+Th is below is like to tirtain anto earth.d ind most true. 
+Therue.
+Th
+
+
+--- Extracting Explicit Logic Rules ---
+
+FROM   | TO     | COUNT  | AVG THINKING STEPS
+---------------------------------------------
+S_27   -> S_27   | 100    | 1.77
+S_45   -> S_45   | 81     | 1.85
+S_45   -> S_27   | 46     | 1.80
+S_27   -> S_45   | 45     | 1.62
