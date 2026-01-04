@@ -1,7 +1,7 @@
 # ============================================================
-# SACRSN v26: THE NORMALISED OMNI-SCIENTIFIC EDITION
-# Fixes: Autograd Safety, Persistent Stack, Normative Ethics
-# Enhanced: Gradient Clipping, Attention, Batch Training
+# SACRSN v27: THE NORMALISED OMNI-SCIENTIFIC EDITION (FIXED)
+# Fixes: Batch Size Mismatch, Syntax Errors, Indentation
+# Features: Stack Memory, ACT, Normative Ethics, Complex Math
 # ============================================================
 
 import os
@@ -51,16 +51,15 @@ CONFIG = {
     "commitment_cost": 0.25,
     "graph_bias_scale": 0.5,
     "symbol_consistency_weight": 0.01,
-    "ethical_weight": 0.005,  # Reduced ethical weight
+    "ethical_weight": 0.005,
     
     # Training
     "epochs": 3000,
     "learning_rate": 1e-3,
-    "grad_clip": 0.1,  # Lowered gradient clipping
+    "grad_clip": 0.1,
     "eps": 1e-6,
     
-    # Batch Training
-    "batch_size": 8,
+    # Scheduler
     "warmup_epochs": 100
 }
 
@@ -87,6 +86,7 @@ class ComplexLayerNorm(nn.Module):
         super().__init__()
         self.scale = nn.Parameter(torch.ones(dim))
         self.shift = nn.Parameter(torch.zeros(dim))
+        
     def forward(self, z):
         mag = torch.abs(z) + CONFIG["eps"]
         mean = mag.mean(dim=-1, keepdim=True)
@@ -100,6 +100,7 @@ class ModReLU(nn.Module):
     def __init__(self, dim):
         super().__init__()
         self.bias = nn.Parameter(torch.zeros(dim))
+        
     def forward(self, z):
         norm = torch.abs(z) + CONFIG["eps"]
         scale = F.relu(norm + self.bias) / norm
@@ -112,6 +113,7 @@ class ComplexLinear(nn.Module):
         self.fc_imag = nn.Linear(dim, dim, bias=False)
         nn.init.xavier_uniform_(self.fc_real.weight)
         nn.init.xavier_uniform_(self.fc_imag.weight)
+        
     def forward(self, z):
         return torch.complex(
             self.fc_real(z.real) - self.fc_imag(z.imag),
@@ -162,20 +164,10 @@ class GraphMemoryVQ(nn.Module):
             2 * torch.matmul(z_flat, self.codebook.t())
         
         if prev_symbol_idx is not None:
-            # Handle batch index for adjacency
-            # We take the mean adjacency effect for the batch (Simplified for batch training)
-            # In a rigorous sequence model, each batch item has its own prev_sym.
-            # Here we assume prev_symbol_idx is [Batch]
-            if prev_symbol_idx.dim() > 0:
-                # We can't easily bias the whole batch matrix efficiently with different priors per item without a loop or huge tensor expansion.
-                # Simplification: Use the mode (most common symbol) or skip bias for batch training step.
-                # For v26 accuracy, let's skip bias during batch training to avoid shape mismatch errors, 
-                # but enable it during inference (batch_size=1).
-                pass 
-            else:
-                 graph_prior = self.adjacency[prev_symbol_idx]
-                 bias = CONFIG["graph_bias_scale"] * torch.sigmoid(graph_prior)
-                 d = d - bias
+            # During sequential training, prev_symbol_idx is valid
+            graph_prior = self.adjacency[prev_symbol_idx]
+            bias = CONFIG["graph_bias_scale"] * torch.sigmoid(graph_prior)
+            d = d - bias
 
         min_indices = torch.argmin(d, dim=-1)
         z_q = F.embedding(min_indices, self.codebook)
@@ -208,15 +200,9 @@ class ComplexAttention(nn.Module):
         k = self.k_proj(z)
         v = self.v_proj(z)
         
-        # Complex Dot Product Attention
-        # (a+bi)(c-di) = (ac+bd) + i(bc-ad) -> We use the Real part for attention scores
-        # Simplified: Just match magnitudes/phases implicitly via linear layers
-        
-        # To make this robust, we process Real/Imag parts as a concatenated vector for the softmax
         q_flat = torch.cat([q.real, q.imag], dim=-1)
         k_flat = torch.cat([k.real, k.imag], dim=-1)
         
-        # Simple Dot Product on flat representation
         attn_scores = torch.matmul(q_flat, k_flat.transpose(-2, -1)) * self.scale
         
         if mask is not None:
@@ -224,36 +210,13 @@ class ComplexAttention(nn.Module):
         
         attn_weights = F.softmax(attn_scores, dim=-1)
         
-        # Apply weights to V (Keep it complex)
-        # We separate V into Real/Imag to multiply
         v_real = torch.matmul(attn_weights, v.real)
         v_imag = torch.matmul(attn_weights, v.imag)
         
         return torch.complex(v_real, v_imag)
 
 # ==========================================
-# 6. Enhanced Transformer Layer
-# ==========================================
-class MultiHeadComplexTransformer(nn.Module):
-    def __init__(self, dim, heads=4):
-        super().__init__()
-        self.heads = heads
-        self.attention = nn.ModuleList([ComplexAttention(dim) for _ in range(heads)])
-        self.output_proj = ComplexLinear(dim)
-        self.norm = ComplexLayerNorm(dim)
-    
-    def forward(self, z):
-        # Multi-head average
-        outputs = [head(z) for head in self.attention]
-        # Stack and average complex tensors
-        real_avg = torch.stack([o.real for o in outputs], dim=0).mean(dim=0)
-        imag_avg = torch.stack([o.imag for o in outputs], dim=0).mean(dim=0)
-        combined = torch.complex(real_avg, imag_avg)
-        
-        return self.norm(self.output_proj(combined))
-
-# ==========================================
-# 7. Core Processor & [FIXED] Ethical Layer
+# 6. Core Processor & Ethical Layer
 # ==========================================
 class EthicalConstraint(nn.Module):
     def __init__(self):
@@ -262,42 +225,31 @@ class EthicalConstraint(nn.Module):
     def forward(self, prev_sym, curr_sym, adjacency):
         if prev_sym is None: return torch.tensor(0.0).to(adjacency.device)
         
-        # [FIX] Normative Ethics
-        # Handling Batch indices for lookup
-        # adjacency: [N, N]
-        # prev_sym: [Batch]
-        # curr_sym: [Batch]
-        
-        if prev_sym.dim() == 0: # Single item
-             row_logits = adjacency[prev_sym]
-             return F.cross_entropy(row_logits.unsqueeze(0), curr_sym.unsqueeze(0))
-        else: # Batch
-             row_logits = adjacency[prev_sym] # [Batch, N]
-             return F.cross_entropy(row_logits, curr_sym)
+        # Normative Ethics: Use Graph Probability Distribution
+        row_logits = adjacency[prev_sym]
+        return F.cross_entropy(row_logits.view(-1, CONFIG["n_symbols"]), curr_sym.view(-1))
 
 class AdaptiveRecursiveCell(nn.Module):
     def __init__(self, dim):
         super().__init__()
         self.linear = ComplexLinear(dim)
-        self.norm = ComplexLayerNorm(dim) 
+        self.norm = ComplexLayerNorm(dim)
         self.act = ModReLU(dim)
         self.halt_linear = nn.Linear(dim * 2, 1)
         self.stack_ctrl = nn.Linear(dim * 2, 3)
-        self.attention = ComplexAttention(dim) # Added Self-Attention to cell
-        nn.init.constant_(self.halt_linear.bias, -2.0) 
-    
+        self.attention = ComplexAttention(dim)
+        nn.init.constant_(self.halt_linear.bias, -2.0)
+
     def forward(self, z):
         z_proc = self.act(self.norm(self.linear(z)))
-        # Self-Attention on the thought vector
-        z_proc = self.attention(z_proc)
-        
+        z_proc = self.attention(z_proc) # Self-attention on thought
         z_flat = torch.cat([z_proc.real, z_proc.imag], dim=-1)
         halt_prob = torch.sigmoid(self.halt_linear(z_flat))
         stack_probs = F.softmax(self.stack_ctrl(z_flat), dim=-1)
         return z_proc, halt_prob, stack_probs
 
 # ==========================================
-# 8. Master Model (UberCRSN)
+# 7. Master Model (UberCRSN)
 # ==========================================
 class UberCRSN(nn.Module):
     def __init__(self, vocab_size, dim):
@@ -308,14 +260,12 @@ class UberCRSN(nn.Module):
         self.cell = AdaptiveRecursiveCell(dim)
         self.vq_layer = GraphMemoryVQ(dim, CONFIG["n_symbols"])
         self.decoder = nn.Linear(dim*2, vocab_size)
-        
+
         if CONFIG["use_stack"]:
             self.stack = DifferentiableStack(dim, CONFIG["stack_size"])
             
         self.ethics = EthicalConstraint()
         self.register_buffer("prev_sym_soft", torch.zeros(CONFIG["n_symbols"]))
-        # Added Transformer for global context processing
-        self.transformer = MultiHeadComplexTransformer(dim)
 
     def embed(self, idx):
         r = self.emb_mag(idx)
@@ -323,10 +273,10 @@ class UberCRSN(nn.Module):
         return torch.complex(r*torch.cos(t), r*torch.sin(t))
 
     def forward(self, input_ids, hidden=None, prev_sym=None):
-        # input_ids: [Batch, 1]
         batch_size = input_ids.size(0)
         z = self.embed(input_ids).squeeze(1)
         
+        # Persistent Stack State
         if hidden is None:
             z_prev = torch.zeros_like(z)
             stack_mem = torch.zeros(batch_size, CONFIG["stack_size"], self.dim*2, device=z.device)
@@ -384,18 +334,19 @@ class UberCRSN(nn.Module):
         features = torch.cat([z_weighted.real, z_weighted.imag], dim=-1)
         logits = self.decoder(features)
         
+        # Pack hidden state tuple
         next_hidden = (z_weighted, stack_mem, stack_ptr)
         
-        # Flatten stack history for batch return (just take mean for logging)
+        # Flatten stack history for diagnostics
         if len(stack_history) > 0:
-            stack_hist_mean = torch.stack(stack_history).mean().item()
+            avg_stack = torch.stack(stack_history).mean()
         else:
-            stack_hist_mean = 0.0
+            avg_stack = torch.tensor(0.0)
             
-        return logits, next_hidden, current_sym, ponder_cost, vq_loss_total, perplexity_total/act_step, ethical_loss_total, stack_hist_mean
+        return logits, next_hidden, current_sym, ponder_cost, vq_loss_total, perplexity_total/act_step, ethical_loss_total, avg_stack
 
 # ==========================================
-# 9. Training Engine with Batch Support
+# 8. Training Engine (Sequential Fixed)
 # ==========================================
 def train():
     model = UberCRSN(vocab_size, CONFIG["embedding_dim"]).to(DEVICE)
@@ -407,8 +358,8 @@ def train():
         main_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=CONFIG["epochs"] - CONFIG["warmup_epochs"], eta_min=1e-5)
         scheduler = torch.optim.lr_scheduler.SequentialLR(opt, schedulers=[scheduler, main_scheduler], milestones=[CONFIG["warmup_epochs"]])
 
-    print(f"--- Training SACRSN v26 Enhanced ---")
-    print(f"--- Fixes: AutoGrad | Stack Persist | Normative Ethics | Attention | Batch ---")
+    print(f"--- Training SACRSN v27 Corrected ---")
+    print(f"--- Fixes: Sequential Logic | AutoGrad | Stack Persist ---")
     
     try:
         prev_avg_loss = float('inf')
@@ -417,34 +368,27 @@ def train():
         for epoch in range(CONFIG["epochs"]):
             hidden = None
             prev_sym = None
+            
             total_loss = 0
             total_ponder = 0
             total_ppx = 0
-            window = 16 
+            
             entropy_weight = 0.01 * (1 - epoch / CONFIG["epochs"])
             
-            # Batch processing
-            batch_size = CONFIG["batch_size"]
-            num_samples = len(data_tensor) - 1
-            num_batches = (num_samples + batch_size - 1) // batch_size
-            
-            for batch_idx in range(num_batches):
-                start_idx = batch_idx * batch_size
-                end_idx = min(start_idx + batch_size, num_samples)
+            # SEQUENTIAL LOOP (Batch Size = 1)
+            for i in range(len(data_tensor) - 1):
+                x = data_tensor[i].view(1, 1)
+                y = data_tensor[i+1].view(1)
                 
-                # Get Batch [Batch_Size, 1]
-                batch_x = data_tensor[start_idx:end_idx].view(-1, 1)
-                batch_y = data_tensor[start_idx+1:end_idx+1].view(-1)
+                # Forward
+                logits, hidden, sym_idx, ponder, vq_loss, ppx, eth_loss, _ = model(x, hidden, prev_sym)
                 
-                # Forward Pass
-                logits, hidden, sym_idx, ponder, vq_loss, ppx, eth_loss, _ = model(batch_x, hidden, prev_sym)
-                
-                # Detach hidden
+                # Detach Hidden State (TBPTT style)
                 h_z, h_mem, h_ptr = hidden
                 hidden = (h_z.detach(), h_mem.detach(), h_ptr.detach())
                 prev_sym = sym_idx.detach()
                 
-                loss_pred = F.cross_entropy(logits, batch_y)
+                loss_pred = F.cross_entropy(logits, y)
                 loss_ponder = CONFIG["ponder_penalty"] * ponder
                 
                 probs = F.softmax(logits, dim=-1)
@@ -457,57 +401,52 @@ def train():
                 
                 # Temporal Consistency
                 curr_onehot = F.one_hot(sym_idx, CONFIG["n_symbols"]).float()
-                # Batch Handling for OneHot
-                if curr_onehot.dim() == 2: 
-                     # Average over batch for buffer update (Simplification for v26)
-                     curr_onehot_mean = curr_onehot.mean(dim=0)
-                else:
-                     curr_onehot_mean = curr_onehot
-                     
+                if curr_onehot.dim() > 1: curr_onehot = curr_onehot.view(-1)
+                
                 loss_temporal = CONFIG["symbol_consistency_weight"] * F.mse_loss(
-                    curr_onehot_mean, 
+                    curr_onehot, 
                     model.prev_sym_soft.detach()
                 )
                 
                 with torch.no_grad():
                     model.prev_sym_soft.copy_(
-                        model.prev_sym_soft * 0.9 + curr_onehot_mean * 0.1
+                        model.prev_sym_soft * 0.9 + curr_onehot * 0.1
                     )
                 
                 loss_ethics = CONFIG["ethical_weight"] * eth_loss
                 
-                # Enhanced loss composition
-                total_loss_batch = (loss_pred * 1.0) + \
-                                  (loss_ponder * 0.01) + \
-                                  (vq_loss * 0.05) + \
-                                  (loss_entropy * 0.02) + \
-                                  (loss_static * 0.01) + \
-                                  (loss_temporal * 0.01) + \
-                                  (loss_ethics * 0.005)
+                # Total Loss
+                loss = (loss_pred * 1.0) + \
+                       (loss_ponder * 0.01) + \
+                       (vq_loss * 0.05) + \
+                       (loss_entropy * 0.02) + \
+                       (loss_static * 0.01) + \
+                       (loss_temporal * 0.01) + \
+                       (loss_ethics * 0.005)
                 
                 opt.zero_grad()
-                total_loss_batch.backward()
+                loss.backward()
                 torch.nn.utils.clip_grad_norm_(model.parameters(), CONFIG["grad_clip"])
                 opt.step()
                 
-                total_loss += total_loss_batch.item()
+                total_loss += loss.item()
                 total_ponder += ponder.item()
                 total_ppx += ppx.item()
                 
             scheduler.step()
 
             if epoch % 50 == 0:
-                avg_loss = total_loss / num_batches
-                avg_ponder = total_ponder / num_batches
-                avg_ppx = total_ppx / num_batches
+                avg_loss = total_loss / len(data_tensor)
+                avg_ponder = total_ponder / len(data_tensor)
+                avg_ppx = total_ppx / len(data_tensor)
                 lr = scheduler.get_last_lr()[0]
                 print(f"Ep {epoch:04d} | Loss: {avg_loss:.4f} | Steps: {avg_ponder:.2f} | Usage(PPX): {avg_ppx:.1f} | LR: {lr:.6f}")
                 
+                # Early Stop
                 if avg_loss < 0.01:
                     print("\n--- PERFECT CONVERGENCE ---")
                     return model
                 
-                # Convergence Monitor
                 if epoch > 200 and avg_loss > prev_avg_loss:
                     patience += 1
                     if patience > 20: 
@@ -521,19 +460,16 @@ def train():
     return model
 
 # ==========================================
-# 10. Visualization Suite (X-RAY)
+# 9. Visualization Suite
 # ==========================================
 def visualize_all(model):
     print("\n--- Generating Diagnostics & Images ---")
     model.eval()
     
     # 1. Semantic Mapping
-    print("Mapping Symbols to Text...")
     symbol_to_char = defaultdict(list)
     hidden, prev_sym = None, None
-    
     with torch.no_grad():
-        # Single batch inference for viz
         for i in range(len(data_tensor) - 1):
             x = data_tensor[i].view(1, 1)
             _, hidden, prev_sym, _, _, _, _, _ = model(x, hidden, prev_sym)
@@ -582,9 +518,7 @@ def visualize_all(model):
     # 3. Inference Scan
     hidden, prev_sym = None, None
     x = torch.tensor([[char_to_ix["T"]]], device=DEVICE)
-    
-    stack_history = []
-    act_history = []
+    stack_history, act_history, phase_reals, phase_imags = [], [], [], []
     gen_text = "T"
     
     print("Running Inference Scan...")
@@ -592,9 +526,17 @@ def visualize_all(model):
         with torch.no_grad():
             logits, hidden, prev_sym, ponder, _, _, _, s_hist = model(x, hidden, prev_sym)
             
-            # Stack depth
-            stack_history.append(s_hist)
+            stack_history.append(s_hist.item())
             act_history.append(1.0 + ponder.item())
+            
+            # Unpack z from hidden state
+            z = hidden[0].cpu().squeeze()
+            if z.dim() > 0: 
+                phase_reals.append(z.real[0].item())
+                phase_imags.append(z.imag[0].item())
+            else:
+                phase_reals.append(z.real.item())
+                phase_imags.append(z.imag.item())
 
             probs = F.softmax(logits, dim=-1)
             next_ix = torch.multinomial(probs, 1)
@@ -617,6 +559,15 @@ def visualize_all(model):
     plt.bar(range(len(act_history)), act_history, color='orange')
     plt.title("3_act_profile (Thinking Steps)")
     plt.savefig("3_act_profile.png")
+    plt.close()
+    
+    # Phase Plot
+    plt.figure(figsize=(8, 8))
+    plt.scatter(phase_reals, phase_imags, c=range(len(phase_reals)), cmap='plasma', alpha=0.5)
+    plt.colorbar(label="Time")
+    plt.title("4_phase_plot (Complex Trajectory)")
+    plt.axis('equal')
+    plt.savefig("4_phase_plot.png")
     plt.close()
 
 def extract_logic_rules(model, data_tensor):
@@ -644,29 +595,28 @@ def extract_logic_rules(model, data_tensor):
             print(f"S_{src:<4} -> S_{dst:<4} | {len(ponders):<6} | {sum(ponders)/len(ponders):.2f}")
 
 # ==========================================
-# 11. Advanced Interaction (System 2 Features)
+# 10. Advanced Interaction
 # ==========================================
 def dream_mode(model):
     print("\n--- 🌙 Dream Mode (Pure Symbolic Walk) ---")
     adj = torch.sigmoid(model.vq_layer.adjacency).detach().cpu().numpy()
-    
     model.eval()
     x = torch.tensor([[char_to_ix["T"]]], device=DEVICE)
     _, _, prev_sym, _, _, _, _, _ = model(x, None, None)
     curr_sym = prev_sym.item()
-    
     output = "T"
     
     for _ in range(100):
         probs = adj[curr_sym]
         probs[probs < 0.2] = 0 
-        
         if probs.sum() == 0: break
         probs = probs / probs.sum()
         next_sym = np.random.choice(len(probs), p=probs)
         
-        # Direct Codebook Decode
         z_flat = model.vq_layer.codebook[next_sym].unsqueeze(0)
+        # Handle Complex Codebook for Decoder
+        # The decoder expects flat [Real, Imag]
+        # Codebook is already stored flat in GraphMemoryVQ as [latent_dim*2]
         logits = model.decoder(z_flat)
         char_idx = torch.argmax(logits).item()
         
@@ -699,7 +649,7 @@ def anomaly_detector(model):
     plt.close()
 
 # ==========================================
-# 12. Main Execution
+# 11. Main Execution
 # ==========================================
 if __name__ == "__main__":
     FILENAME = "crsn_omni_model.pth"
