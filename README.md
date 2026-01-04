@@ -1195,3 +1195,101 @@ Input: ‘True without falsehood certain
 <img width="1200" height="400" alt="2_stack_mri" src="https://github.com/user-attachments/assets/b2119f5a-f88b-4a39-b992-00b24908f63e" />
 <img width="2100" height="2100" alt="1_semantic_topology" src="https://github.com/user-attachments/assets/09f5051c-75de-4bfd-a4f1-a2ecff3c7874" />
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SACRSNv26-1
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SACRSNv27
+
+Ep 0000 | Loss: 4.0833 | Steps: 7.77 | Usage(PPX): 1.0 | LR: 0.000109
+Ep 0050 | Loss: 4.0094 | Steps: 7.24 | Usage(PPX): 1.0 | LR: 0.000559
+Ep 0100 | Loss: 4.0575 | Steps: 6.78 | Usage(PPX): 1.0 | LR: 0.001000
+Ep 0150 | Loss: 4.8585 | Steps: 7.69 | Usage(PPX): 1.0 | LR: 0.000999
+Ep 0200 | Loss: 5.2449 | Steps: 7.55 | Usage(PPX): 1.0 | LR: 0.000997
+Ep 0250 | Loss: 4.3603 | Steps: 7.34 | Usage(PPX): 1.0 | LR: 0.000993
+Ep 0300 | Loss: 2.5004 | Steps: 4.50 | Usage(PPX): 1.0 | LR: 0.000988
+Ep 0350 | Loss: 1.7094 | Steps: 2.10 | Usage(PPX): 1.0 | LR: 0.000982
+Ep 0400 | Loss: 1.1630 | Steps: 1.87 | Usage(PPX): 1.0 | LR: 0.000974
+Ep 0450 | Loss: 1.1030 | Steps: 1.72 | Usage(PPX): 1.0 | LR: 0.000965
+Ep 0500 | Loss: 1.2623 | Steps: 1.64 | Usage(PPX): 1.0 | LR: 0.000954
+Ep 0550 | Loss: 1.1349 | Steps: 1.81 | Usage(PPX): 1.0 | LR: 0.000942
+Ep 0600 | Loss: 1.2297 | Steps: 1.74 | Usage(PPX): 1.0 | LR: 0.000929
+Ep 0650 | Loss: 0.9114 | Steps: 1.66 | Usage(PPX): 1.0 | LR: 0.000914
+Ep 0700 | Loss: 0.9918 | Steps: 1.78 | Usage(PPX): 1.0 | LR: 0.000899
+Ep 0750 | Loss: 1.1933 | Steps: 1.82 | Usage(PPX): 1.0 | LR: 0.000882
+Ep 0800 | Loss: 0.9970 | Steps: 1.85 | Usage(PPX): 1.0 | LR: 0.000864
+Ep 0850 | Loss: 1.0687 | Steps: 1.83 | Usage(PPX): 1.0 | LR: 0.000845
+Ep 0900 | Loss: 1.1498 | Steps: 1.86 | Usage(PPX): 1.0 | LR: 0.000825
+Ep 0950 | Loss: 1.2948 | Steps: 1.89 | Usage(PPX): 1.0 | LR: 0.000804
+Ep 1000 | Loss: 0.9906 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000782
+Ep 1050 | Loss: 0.7563 | Steps: 1.80 | Usage(PPX): 1.0 | LR: 0.000760
+Ep 1100 | Loss: 0.6577 | Steps: 1.89 | Usage(PPX): 1.0 | LR: 0.000736
+Ep 1150 | Loss: 1.1126 | Steps: 1.86 | Usage(PPX): 1.0 | LR: 0.000712
+Ep 1200 | Loss: 0.7503 | Steps: 1.88 | Usage(PPX): 1.0 | LR: 0.000688
+Ep 1250 | Loss: 0.7474 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000663
+Ep 1300 | Loss: 0.7194 | Steps: 1.90 | Usage(PPX): 1.0 | LR: 0.000637
+Ep 1350 | Loss: 1.0606 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000611
+Ep 1400 | Loss: 0.6693 | Steps: 1.90 | Usage(PPX): 1.0 | LR: 0.000585
+Ep 1450 | Loss: 0.6215 | Steps: 1.85 | Usage(PPX): 1.0 | LR: 0.000558
+Ep 1500 | Loss: 0.9688 | Steps: 1.82 | Usage(PPX): 1.0 | LR: 0.000531
+Ep 1550 | Loss: 0.6825 | Steps: 1.83 | Usage(PPX): 1.0 | LR: 0.000504
+Ep 1600 | Loss: 1.0784 | Steps: 1.83 | Usage(PPX): 1.0 | LR: 0.000478
+Ep 1650 | Loss: 0.5681 | Steps: 1.78 | Usage(PPX): 1.0 | LR: 0.000451
+Ep 1700 | Loss: 1.2201 | Steps: 1.77 | Usage(PPX): 1.0 | LR: 0.000424
+Early stopping due to no improvement
+
+--- Saving Model to crsn_omni_model.pth ---
+Saved.
+
+--- Generating Diagnostics & Images ---
+Saved 1_semantic_topology.png
+Running Inference Scan...
+Generated: True. 
+That which is above world is above is above withich is above world is be ce is ento earlike move world if it be withpe is be ce.
+Thich is above is here.
+Its force be.
+Thich is above is above con
+
+
+--- Extracting Explicit Logic Rules ---
+
+FROM   | TO     | COUNT  | AVG STEPS 
+---------------------------------------------
+S_60   -> S_60   | 151    | 1.77
+S_6    -> S_60   | 20     | 1.85
+S_60   -> S_6    | 17     | 1.59
+S_6    -> S_6    | 12     | 1.92
+S_59   -> S_6    | 10     | 1.40
+S_6    -> S_59   | 7      | 2.00
+S_46   -> S_6    | 7      | 1.71
+S_6    -> S_25   | 6      | 1.83
+S_25   -> S_46   | 5      | 1.80
+S_25   -> S_25   | 4      | 2.00
+S_6    -> S_46   | 4      | 1.75
+S_25   -> S_60   | 4      | 2.25
+S_46   -> S_59   | 3      | 1.33
+S_59   -> S_59   | 3      | 1.67
+S_25   -> S_6    | 3      | 1.67
+S_60   -> S_25   | 3      | 1.67
+S_59   -> S_25   | 2      | 1.50
+S_46   -> S_25   | 2      | 2.00
+S_46   -> S_46   | 2      | 2.00
+S_60   -> S_46   | 2      | 2.00
+
+--- 🌙 Dream Mode (Pure Symbolic Walk) ---
+Dream Output: T
+
+
+--- 🚨 Anomaly Detection Test ---
+Input: 'True without falsehood certain and most banana'
+Saved 5_anomaly_detection.png
+
+<img width="1000" height="400" alt="5_anomaly_detection" src="https://github.com/user-attachments/assets/2733cc44-53a0-47ad-b2ce-a75bf7165b09" />
+<img width="800" height="800" alt="4_phase_plot" src="https://github.com/user-attachments/assets/478aa023-03b7-4f79-a0c6-0cb611067ac6" />
+<img width="1200" height="400" alt="3_act_profile" src="https://github.com/user-attachments/assets/94183a5f-5892-43b1-a107-da163adf1d68" />
+<img width="1200" height="400" alt="2_stack_mri" src="https://github.com/user-attachments/assets/613a639f-0f7a-4be7-a623-b72655d84a38" />
+<img width="2100" height="2100" alt="1_semantic_topology" src="https://github.com/user-attachments/assets/21d5281d-618a-4ea9-82c2-679adf370b62" />
+
