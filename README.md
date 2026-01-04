@@ -1293,3 +1293,6 @@ Saved 5_anomaly_detection.png
 <img width="1200" height="400" alt="2_stack_mri" src="https://github.com/user-attachments/assets/613a639f-0f7a-4be7-a623-b72655d84a38" />
 <img width="2100" height="2100" alt="1_semantic_topology" src="https://github.com/user-attachments/assets/21d5281d-618a-4ea9-82c2-679adf370b62" />
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SACRSNv27 Commitment cost 1.0
