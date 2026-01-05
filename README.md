@@ -1369,6 +1369,71 @@ Saved 5_anomaly_detection.png
 
 SACRSNv27-1
 
+Ep 0000 | Loss: 4.0781 | Steps: 7.75 | Usage(PPX): 1.0 | LR: 0.000109
+Ep 0050 | Loss: 3.9399 | Steps: 6.96 | Usage(PPX): 1.0 | LR: 0.000559
+Ep 0100 | Loss: 4.2227 | Steps: 6.14 | Usage(PPX): 1.0 | LR: 0.001000
+Ep 0150 | Loss: 5.3202 | Steps: 7.80 | Usage(PPX): 1.0 | LR: 0.000999
+Ep 0200 | Loss: 4.5376 | Steps: 7.75 | Usage(PPX): 1.0 | LR: 0.000997
+Ep 0250 | Loss: 5.2094 | Steps: 7.35 | Usage(PPX): 1.0 | LR: 0.000993
+Ep 0300 | Loss: 4.4200 | Steps: 7.76 | Usage(PPX): 1.0 | LR: 0.000988
+Ep 0350 | Loss: 2.9999 | Steps: 5.94 | Usage(PPX): 1.0 | LR: 0.000982
+Ep 0400 | Loss: 1.9233 | Steps: 3.64 | Usage(PPX): 1.0 | LR: 0.000974
+Ep 0450 | Loss: 1.5774 | Steps: 2.31 | Usage(PPX): 1.0 | LR: 0.000965
+Ep 0500 | Loss: 1.1318 | Steps: 1.99 | Usage(PPX): 1.0 | LR: 0.000954
+Ep 0550 | Loss: 1.1884 | Steps: 1.90 | Usage(PPX): 1.0 | LR: 0.000942
+Ep 0600 | Loss: 0.8961 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000929
+Ep 0650 | Loss: 1.1525 | Steps: 1.94 | Usage(PPX): 1.0 | LR: 0.000914
+Ep 0700 | Loss: 1.1222 | Steps: 1.95 | Usage(PPX): 1.0 | LR: 0.000899
+Ep 0750 | Loss: 1.1187 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000882
+Ep 0800 | Loss: 1.6186 | Steps: 1.98 | Usage(PPX): 1.0 | LR: 0.000864
+Ep 0850 | Loss: 1.0168 | Steps: 1.93 | Usage(PPX): 1.0 | LR: 0.000845
+Ep 0900 | Loss: 1.4369 | Steps: 1.97 | Usage(PPX): 1.0 | LR: 0.000825
+Ep 0950 | Loss: 1.0313 | Steps: 1.96 | Usage(PPX): 1.0 | LR: 0.000804
+Ep 1000 | Loss: 1.0890 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000782
+Ep 1050 | Loss: 1.1866 | Steps: 1.92 | Usage(PPX): 1.0 | LR: 0.000760
+Ep 1100 | Loss: 1.1092 | Steps: 1.86 | Usage(PPX): 1.0 | LR: 0.000736
+Ep 1150 | Loss: 1.2204 | Steps: 1.92 | Usage(PPX): 1.0 | LR: 0.000712
+Ep 1200 | Loss: 0.9309 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000688
+Ep 1250 | Loss: 0.7740 | Steps: 1.87 | Usage(PPX): 1.0 | LR: 0.000663
+Ep 1300 | Loss: 1.1626 | Steps: 1.89 | Usage(PPX): 1.0 | LR: 0.000637
+Ep 1350 | Loss: 0.5222 | Steps: 1.92 | Usage(PPX): 1.0 | LR: 0.000611
+Ep 1400 | Loss: 1.1357 | Steps: 1.88 | Usage(PPX): 1.0 | LR: 0.000585
+Ep 1450 | Loss: 0.7097 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000558
+Ep 1500 | Loss: 1.0906 | Steps: 1.86 | Usage(PPX): 1.0 | LR: 0.000531
+Ep 1550 | Loss: 1.2990 | Steps: 1.86 | Usage(PPX): 1.0 | LR: 0.000504
+Ep 1600 | Loss: 1.2084 | Steps: 1.91 | Usage(PPX): 1.0 | LR: 0.000478
+Early stopping due to no improvement
+
+--- Saving Model to crsn_omni_model.pth ---
+Saved.
+
+--- Generating Diagnostics & Images ---
+Saved 1_semantic_topology.png
+Running Inference Scan...
+Generated: True, certat wither of all per is below is belower is above is above is below, cer if all per is below is above is below is belower is above is below, certat wither of all per is her of all per of is b
+
+
+--- Extracting Explicit Logic Rules ---
+
+FROM   | TO     | COUNT  | AVG STEPS 
+---------------------------------------------
+S_7    -> S_7    | 272    | 1.90
+
+--- 🌙 Dream Mode (Pure Symbolic Walk) ---
+Dream Output: Tbdkwo
+
+
+--- 🚨 Anomaly Detection Test ---
+Input: 'True without falsehood certain and most banana'
+Saved 5_anomaly_detection.png
+
+<img width="1000" height="400" alt="5_anomaly_detection" src="https://github.com/user-attachments/assets/2f9e8e7a-1bc4-49bd-ba9c-9285be98e637" />
+<img width="800" height="800" alt="4_phase_plot" src="https://github.com/user-attachments/assets/0ceaad57-dd72-412b-9b61-93a816547ecb" />
+<img width="1200" height="400" alt="3_act_profile" src="https://github.com/user-attachments/assets/99e59846-abc3-41a9-9684-9f085bf8f5bf" />
+<img width="1200" height="400" alt="2_stack_mri" src="https://github.com/user-attachments/assets/a1553fd1-f815-4b51-a3f0-8df54971ce1d" />
+<img width="2100" height="2100" alt="1_semantic_topology" src="https://github.com/user-attachments/assets/a03b8470-342b-4de2-a509-ef6e3101ff64" />
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 SACRSNv28
